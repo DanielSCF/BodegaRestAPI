@@ -19,7 +19,11 @@ public class ProductoServicio {
 		return (List<Producto>) infoProducto.findAll();
 	}
 	
-	public Optional<Producto> buscarProductoNombre(String nombre) {
+	public Optional<Producto> getProductById(Long productoId){
+		return infoProducto.findById(productoId);
+	}
+	
+	public Optional<List<Producto>> buscarProductoNombre(String nombre) {
 		return infoProducto.findBynombre(nombre);
 	}
 }

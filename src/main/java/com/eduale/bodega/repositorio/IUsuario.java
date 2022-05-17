@@ -6,6 +6,6 @@ import com.eduale.bodega.modelo.Usuario;
 
 public interface IUsuario extends CrudRepository<Usuario, Long>{
 	
-	Usuario findOnebyNicknameIgnoreCaseAndClave(String Nickname, String Clave );
+	Usuario findOneByNicknameIgnoreCaseAndClave(String Nickname, String Clave );
 
 }

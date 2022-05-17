@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 public class APIResponse {
 	
 	    private Integer status;
-	    private Object data;
+	    private String data;
 	    private Object error;
 
 	    public APIResponse() {
@@ -21,16 +21,17 @@ public class APIResponse {
 	    public void setStatus(Integer status) {
 	        this.status = status;
 	    }
+	    
+	   
+	    public String getData() {
+			return data;
+		}
 
-	    public Object getData() {
-	        return data;
-	    }
+		public void setData(String data) {
+			this.data = data;
+		}
 
-	    public void setData(Object data) {
-	        this.data = data;
-	    }
-
-	    public Object getError() {
+		public Object getError() {
 	        return error;
 	    }
 

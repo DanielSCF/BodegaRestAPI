@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.eduale.bodega.modelo.TipoAcceso;
 
-public interface ITipoAcceso extends CrudRepository<TipoAcceso, Long>{
+public interface ITipoAcceso extends CrudRepository<TipoAcceso, Long> {
 
 }

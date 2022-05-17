@@ -11,60 +11,45 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tipoAcceso")
-public class TipoAcceso {
+@Table(name = "categoria")
+public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long tipoAccesoID;
+	private Long categoriaID;
 	
 	private String nombre;
-	private String descripcion;
 	private String estado;
 	
-	@OneToMany(mappedBy ="tipoAcceso")
-	private Collection<Usuario> p= new ArrayList<>();
+	public Categoria() {
+		
+	}
+	@OneToMany(mappedBy ="categoria")
+	private Collection<Producto> p= new ArrayList<>();
 	
-	public TipoAcceso(Long tipoAccesoID, String nombre, String descripcion, String estado) {
-		this.tipoAccesoID = tipoAccesoID;
+	public Categoria(Long categoriaID, String nombre, String estado) {
+		super();
+		this.categoriaID = categoriaID;
 		this.nombre = nombre;
-		this.descripcion = descripcion;
 		this.estado = estado;
 	}
-		
-	public TipoAcceso() {
-
+	public Long getCategoriaID() {
+		return categoriaID;
 	}
-
-	public Long getTipoAccesoID() {
-		return tipoAccesoID;
+	public void setCategoriaID(Long categoriaID) {
+		this.categoriaID = categoriaID;
 	}
-
-	public void setTipoAccesoID(Long tipoAccesoID) {
-		this.tipoAccesoID = tipoAccesoID;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
 	public String getEstado() {
 		return estado;
 	}
-
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
 	
 }

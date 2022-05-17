@@ -16,30 +16,29 @@ import com.eduale.bodega.servicio.UsuarioServicio;
 
 @RestController
 @RequestMapping("/usuarios")
-public class UsuarioController {
+public class UsuarioControlador {
 	
-	 @Autowired
-	 private UsuarioServicio loginService;
+	@Autowired
+	private UsuarioServicio usuarioService;
 	 
-	 @GetMapping
-		public List<Usuario> listarUsuario(){
-			return loginService.listarusuario();
-		}
+	@GetMapping
+	public List<Usuario> listarusuario(){
+		return usuarioService.listarusuario();
+	}
 	 
-	 @PostMapping("/login")
-	    public ResponseEntity<APIResponse> login(@RequestBody LoginRequestDTO loginRequestDTO ){
+	@PostMapping("/login")
+	public ResponseEntity<APIResponse> login(@RequestBody LoginRequestDTO loginRequestDTO ){
 
-	        APIResponse apiResponse = loginService.login(loginRequestDTO);
+		APIResponse apiResponse = usuarioService.login(loginRequestDTO);
 
-	        return ResponseEntity
-	                .status(apiResponse.getStatus())
-	                .body(apiResponse);
-	  }
+		return ResponseEntity
+				.status(apiResponse.getStatus())
+				.body(apiResponse);
+	}
 	 
-	 @PostMapping()
-		public Usuario guardarusuario(@RequestBody Usuario t) {
-			return loginService.guardarusuario(t);
-		}
-	 
+	@PostMapping()
+	public Usuario guardarusuario(@RequestBody Usuario t) {
+		return usuarioService.guardarusuario(t);
+	} 
 	 
 }
