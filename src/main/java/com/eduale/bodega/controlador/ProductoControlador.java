@@ -24,7 +24,7 @@ public class ProductoControlador {
 		return productoServicio.listarProductos();
 	}
 	
-	@GetMapping(path ="/{productoId}")
+	@GetMapping(path = "/{productoId}")
 	public Optional<Producto> findProductById(@PathVariable("productoId") Long productoId){
 		return productoServicio.getProductById(productoId);
 	}

@@ -33,20 +33,18 @@ public class UsuarioServicio{
 		return datausuario.save(u);
 	}
 
-	public APIResponse login(LoginRequestDTO loginRequestDTO) {
-		APIResponse apiResponse = new APIResponse();
+	public APIResponse login(Usuario i){
 		
-		Usuario user = datausuario.findOneByNicknameIgnoreCaseAndClave(loginRequestDTO.getNickname(), loginRequestDTO.getClave());
+		APIResponse apiResponse= new APIResponse();
+		Usuario us= datausuario.findByNicknameAndClave(i.getNickname(), i.getClave());
 		
-				
-	   if(user == null){
-		   
-	     apiResponse.setData("logeo fallido");
-	            
-	   }else {
-		   apiResponse.setData("Bienvenido");
-	   }
-	   
+		if(us==null) {
+			apiResponse.setData("Login Fallido");
+		}else {
+			apiResponse.setData("Bienvenido");
+			apiResponse.setUsuario(us);
+		}
+		
 		return apiResponse;
 	}
 	

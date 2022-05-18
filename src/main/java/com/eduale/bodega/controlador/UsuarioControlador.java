@@ -27,13 +27,13 @@ public class UsuarioControlador {
 	}
 	 
 	@PostMapping("/login")
-	public ResponseEntity<APIResponse> login(@RequestBody LoginRequestDTO loginRequestDTO ){
-
-		APIResponse apiResponse = usuarioService.login(loginRequestDTO);
-
+	public ResponseEntity<APIResponse> login(@RequestBody Usuario loginRequestDTO){
+	
+		APIResponse apiResponse= usuarioService.login(loginRequestDTO);
 		return ResponseEntity
 				.status(apiResponse.getStatus())
 				.body(apiResponse);
+		
 	}
 	 
 	@PostMapping()
