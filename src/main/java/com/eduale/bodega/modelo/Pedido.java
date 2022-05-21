@@ -35,7 +35,7 @@ public class Pedido implements Serializable{
 	private Cliente cliente;
 	
 	@ManyToOne
-	@JoinColumn(name="trabajadorID", nullable=false, 
+	@JoinColumn(name="trabajadorID", nullable=true, 
 	foreignKey=@ForeignKey(foreignKeyDefinition = 
 	"foreign key(trabajadorID) references trabajador(trabajadorID)"))
 	private Trabajador trabajador;
