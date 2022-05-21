@@ -20,11 +20,19 @@ public class ClienteServicio {
 		return (List<Cliente>) datacliente.findAll();
 	}
 	
+	public Optional<Cliente> buscarid(Long id) {
+		return datacliente.findById(id);
+	}
+	
 	public Cliente guardarCliente(Cliente u) {
 		return datacliente.save(u);
 	}
-	
-	public Optional<Cliente> buscarid(Long id) {
-		return datacliente.findById(id);
+
+	public Cliente editarCliente(Cliente u) {
+		return datacliente.save(u);
+	}
+
+	public void eliminarCliente(Cliente u) {
+		datacliente.delete(u);
 	}
 }
