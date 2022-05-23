@@ -15,16 +15,16 @@ import com.eduale.bodega.servicio.PedidoServicio;
 @RestController
 @RequestMapping("/pedido")
 public class PedidoControlador {
-	 @Autowired
-	 private PedidoServicio pedidoService;
-	 
-	 @GetMapping
-		public List<Pedido> listarPedido(){
-			return pedidoService.listarPedido();
+	@Autowired
+	private PedidoServicio pedidoService;
+
+	@GetMapping
+	public List<Pedido> listarPedido() {
+		return pedidoService.listarPedido();
 	}
-	 
-	 @PostMapping()
-		public Pedido guardarPedido(@RequestBody Pedido t) {
-			return pedidoService.guardarPedido(t);
+
+	@PostMapping()
+	public Pedido guardarPedido(@RequestBody Pedido t) {
+		return pedidoService.guardarPedido(t);
 	}
 }

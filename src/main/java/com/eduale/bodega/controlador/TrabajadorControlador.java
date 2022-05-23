@@ -15,15 +15,15 @@ import com.eduale.bodega.servicio.TrabajadorServicio;
 @RestController
 @RequestMapping("/trabajador")
 public class TrabajadorControlador {
-	
+
 	@Autowired
 	private TrabajadorServicio trabajadorService;
-	 
+
 	@GetMapping
-	public List<Trabajador> listarTrabajador(){
+	public List<Trabajador> listarTrabajador() {
 		return trabajadorService.listarTrabajador();
 	}
-	 
+
 	@PostMapping()
 	public Trabajador guardarTrabajador(@RequestBody Trabajador t) {
 		return trabajadorService.guardarTrabajador(t);

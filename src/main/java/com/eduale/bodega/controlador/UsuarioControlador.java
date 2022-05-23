@@ -33,7 +33,6 @@ public class UsuarioControlador {
 		return ResponseEntity
 				.status(apiResponse.getStatus())
 				.body(apiResponse);
-		
 	}
 	 
 	@PostMapping()
