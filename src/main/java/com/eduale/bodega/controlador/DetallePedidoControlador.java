@@ -1,9 +1,11 @@
 package com.eduale.bodega.controlador;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +25,13 @@ public class DetallePedidoControlador {
     public List<DetallePedido> listaLote(){
         return detallepedidoservicio.listardetallepedido();
 	}
+
+    @GetMapping(path = "/{clienteID}")
+    public Optional<List<DetallePedido>> findPedidoByCliente(@PathVariable("clienteID") Long clienteID){
+        return detallepedidoservicio.findPedidoByCliente(clienteID);
+    }
 	 
-	@PostMapping()
+	@PostMapping
     public DetallePedido guardarLote(@RequestBody DetallePedido t) {
         return detallepedidoservicio.guardardetallepedido(t);
     }

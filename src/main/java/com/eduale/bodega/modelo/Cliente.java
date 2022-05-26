@@ -37,7 +37,7 @@ public class Cliente {
 	private String apellidos;
 
 	@NotNull
-	@Size(min = 10, max = 150, message = "El campo debe tener de 10 a 150 caracteres")
+	@Size(min = 5, max = 150, message = "El campo debe tener de 10 a 150 caracteres")
 	@Column
 	private String direccion;
 

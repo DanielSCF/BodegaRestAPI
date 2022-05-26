@@ -1,6 +1,7 @@
 package com.eduale.bodega.servicio;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,10 @@ public class DetallePedidoServicio {
 	
 	public DetallePedido guardardetallepedido(DetallePedido u) {
 		return detallepedido.save(u);
-		
 	}
+
+	public Optional<List<DetallePedido>> findPedidoByCliente(Long clienteID) {
+		return detallepedido.findPedidoByCliente(clienteID);
+	}
+
 }
