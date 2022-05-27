@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -25,12 +28,35 @@ public class Producto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productoid;
 	
+	@NotNull
+	@Size(min = 1, max = 100, message = "El campo debe tener de 1 a 100 caracteres")
+	@Column
 	private String nombre;
+	
+	@NotNull
+	@Size(min = 2, max = 200, message = "El campo debe tener de 2 a 200 caracteres")
+	@Column
 	private String descripcion;
+	
+	@NotNull
+	@Column
 	private Double preciocompra;
+	
+	@NotNull
+	@Column
 	private Double precioventa;
+	
+	@NotNull
+	@Column
 	private Integer stock;
+	
+	@NotNull
+	@Size(min = 1, max = 20, message = "El campo debe tener de 1 a 20 caracteres")
+	@Column
 	private String estado;
+	
+	@NotNull
+	@Column
 	private String imagen;
 	
 	@ManyToOne

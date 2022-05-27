@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -24,9 +25,16 @@ public class Pedido implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long pedidoID;
 	
+	@Column
 	private String fecha;
+
+	@Column
 	private Double total;
+
+	@Column
 	private String modalidad;
+
+	@Column
 	private String estado;
 	
 	@ManyToOne

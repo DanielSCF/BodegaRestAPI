@@ -3,12 +3,15 @@ package com.eduale.bodega.modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "trabajador")
@@ -18,12 +21,36 @@ public class Trabajador {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long trabajadorID;
 	
-	private String nombre;
-	private String apellidos;
-	private String telefono;
+	@NotNull
+	@Size(min = 7, max = 8, message = "El campo debe tener 8 caracteres")
+	@Column(unique = true)
 	private String dni;
+
+	@NotNull
+	@Size(min = 3, max = 60, message = "El campo debe tener de 3 a 60 caracteres")
+	@Column
+	private String nombre;
+
+	@NotNull
+	@Size(min = 3, max = 60, message = "El campo debe tener de 3 a 60 caracteres")
+	@Column
+	private String apellidos;
+
+	@NotNull
+	@Size(min = 5, max = 150, message = "El campo debe tener de 10 a 150 caracteres")
+	@Column
 	private String direccion;
+
+	@NotNull
+	@Size(min = 8, max = 9, message = "El campo debe tener 9 caracteres")
+	@Column(unique = true)
+	private String telefono;
+
+	@NotNull
+	@Size(min = 3, max = 50, message = "El campo debe tener de 3 a 50 caracteres")
+	@Column
 	private String cargo;
+
 	
 	@OneToMany(mappedBy ="trabajador")
 	private Collection<Pedido> p1= new ArrayList<>();

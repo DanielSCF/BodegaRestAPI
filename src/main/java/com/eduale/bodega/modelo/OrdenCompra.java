@@ -3,6 +3,7 @@ package com.eduale.bodega.modelo;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -21,8 +22,13 @@ public class OrdenCompra {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long orden_compraID;
 	
+	@Column
 	private String fecha;
+
+	@Column
 	private String total;
+
+	@Column
 	private String estado;
 	
 	@ManyToOne

@@ -1,5 +1,6 @@
 package com.eduale.bodega.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "usuario")
@@ -18,9 +21,21 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long usuarioID;
 	
+	@NotNull
+	@Size(min = 1, max = 60, message = "El campo debe tener de 1 a 60 caracteres")
+	@Column(unique = true)
 	private String nickname;
+
+	@NotNull
+	@Size(min = 1, max = 60, message = "El campo debe tener de 1 a 60 caracteres")
+	@Column
 	private String clave;
+
+	@NotNull
+	@Size(min = 1, max = 20, message = "El campo debe tener de 1 a 20 caracteres")
+	@Column
 	private String estado;
+
 	
 	@ManyToOne
 	@JoinColumn(name="tipo_accesoid",nullable=true,unique=false,
