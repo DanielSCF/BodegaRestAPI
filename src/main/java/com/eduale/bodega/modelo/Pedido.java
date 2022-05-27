@@ -27,6 +27,7 @@ public class Pedido implements Serializable{
 	private String fecha;
 	private Double total;
 	private String modalidad;
+	private String estado;
 	
 	@ManyToOne
 	@JoinColumn(name="clienteID", nullable=false, 
@@ -47,12 +48,13 @@ public class Pedido implements Serializable{
 		
 	}
 	
-	public Pedido(Long pedidoID, String fecha, Double total, String modalidad, Cliente cliente, Trabajador trabajador) {
+	public Pedido(Long pedidoID, String fecha, Double total, String modalidad, String estado,  Cliente cliente, Trabajador trabajador) {
 		super();
 		this.pedidoID = pedidoID;
 		this.fecha = fecha;
 		this.total = total;
 		this.modalidad = modalidad;
+		this.estado = estado;
 		this.cliente = cliente;
 		this.trabajador = trabajador;
 	}
@@ -87,6 +89,14 @@ public class Pedido implements Serializable{
 
 	public void setModalidad(String modalidad) {
 		this.modalidad = modalidad;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public Cliente getCliente() {

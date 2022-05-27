@@ -26,4 +26,8 @@ public class DetallePedidoServicio {
 		return detallepedido.findPedidoByCliente(clienteID);
 	}
 
+	public Optional<List<DetallePedido>> findPedidoByClienteYEstado(Long clienteID, String estado){
+		return detallepedido.findPedidoByClienteYEstado(clienteID, estado);
+	}
+
 }

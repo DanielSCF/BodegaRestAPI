@@ -30,6 +30,11 @@ public class DetallePedidoControlador {
     public Optional<List<DetallePedido>> findPedidoByCliente(@PathVariable("clienteID") Long clienteID){
         return detallepedidoservicio.findPedidoByCliente(clienteID);
     }
+
+    @GetMapping(path = "/{clienteID}/{estado}")
+    public Optional<List<DetallePedido>> findPedidoByClienteYEstado(@PathVariable("clienteID") Long clienteID, @PathVariable("estado") String estado){
+        return detallepedidoservicio.findPedidoByClienteYEstado(clienteID, estado);
+    }
 	 
 	@PostMapping
     public DetallePedido guardarLote(@RequestBody DetallePedido t) {
