@@ -26,4 +26,8 @@ public class ProductoServicio {
 	public Optional<List<Producto>> buscarProductoNombre(String nombre) {
 		return infoProducto.findBynombre(nombre);
 	}
+
+	public Producto guardarProducto(Producto u){
+		return infoProducto.save(u);
+	}
 }

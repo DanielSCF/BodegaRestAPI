@@ -13,48 +13,48 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="detalle_pedido")
+@Table(name = "detalle_pedido")
 @AssociationOverrides({
-	@AssociationOverride(name="DetallePedidoID.pedido",
-			joinColumns = @JoinColumn(name="pedidoID", nullable=false,
-			foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key(pedidoID) references pedido(pedidoID)"))),
-	@AssociationOverride(name="DetallePedidoID.producto",
-			joinColumns = @JoinColumn(name="productoid", nullable=false,
-			foreignKey = @ForeignKey(foreignKeyDefinition ="foreign key(productoid) references producto(productoid)" )))
+		@AssociationOverride(name = "DetallePedidoID.pedido", joinColumns = @JoinColumn(name = "pedidoID", nullable = false, foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key(pedidoID) references pedido(pedidoID)"))),
+		@AssociationOverride(name = "DetallePedidoID.producto", joinColumns = @JoinColumn(name = "productoid", nullable = false, foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key(productoid) references producto(productoid)")))
 })
-public class DetallePedido implements Serializable{
-	
+public class DetallePedido implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@EmbeddedId
-	private DetallePedidoKey DetallePedidoID =new DetallePedidoKey();
-		
+	private DetallePedidoKey DetallePedidoID = new DetallePedidoKey();
+
 	@Column
 	private Integer cantidad;
-	
+
 	@Column
 	private Double precio_venta;
-	
+
 	@Column
 	private Double subtotal;
 
-	
-	public Pedido getPedido() {
-		return DetallePedidoID.getPedido();
+	public DetallePedido() {
+
 	}
 
-	public void setPedido(Pedido pedido) {
-		this.DetallePedidoID.setPedido(pedido);;
+	@Override
+	public int hashCode() {
+		return Objects.hash(DetallePedidoID);
 	}
 
-	public Producto getProducto() {
-		return DetallePedidoID.getProducto();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DetallePedido other = (DetallePedido) obj;
+		return Objects.equals(DetallePedidoID, other.DetallePedidoID);
 	}
 
-	public void setProducto(Producto producto) {
-		this.DetallePedidoID.setProducto(producto);
-	}
-		
 	public DetallePedidoKey getDetallePedidoID() {
 		return DetallePedidoID;
 	}
@@ -63,7 +63,6 @@ public class DetallePedido implements Serializable{
 		DetallePedidoID = detallePedidoID;
 	}
 
-	
 	public Integer getCantidad() {
 		return cantidad;
 	}
@@ -88,25 +87,19 @@ public class DetallePedido implements Serializable{
 		this.subtotal = subtotal;
 	}
 
-	public DetallePedido() {
-		
+	public Pedido getPedido() {
+		return DetallePedidoID.getPedido();
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(DetallePedidoID);
+	public void setPedido(Pedido pedido) {
+		this.DetallePedidoID.setPedido(pedido);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DetallePedido other = (DetallePedido) obj;
-		return Objects.equals(DetallePedidoID, other.DetallePedidoID);
+	public Producto getProducto() {
+		return DetallePedidoID.getProducto();
 	}
-	
+
+	public void setProducto(Producto producto) {
+		this.DetallePedidoID.setProducto(producto);
+	}
 }

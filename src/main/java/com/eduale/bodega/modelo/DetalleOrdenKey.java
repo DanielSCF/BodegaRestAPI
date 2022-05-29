@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 
 @Embeddable
 public class DetalleOrdenKey implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
@@ -21,7 +22,6 @@ public class DetalleOrdenKey implements Serializable{
 	}
 
 	public DetalleOrdenKey(OrdenCompra orden_compra, Producto producto) {
-		super();
 		this.orden_compra = orden_compra;
 		this.producto = producto;
 	}

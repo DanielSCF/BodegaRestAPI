@@ -13,30 +13,47 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="detalle_orden")
+@Table(name = "detalle_orden")
 @AssociationOverrides({
-	@AssociationOverride(name="DetalleOrdenID.orden_compra",
-			joinColumns = @JoinColumn(name="orden_compraid", nullable=false,
-			foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key(orden_compraid) references orden_compra(orden_compraid)"))),
-	@AssociationOverride(name="DetalleOrdenID.producto",
-			joinColumns = @JoinColumn(name="productoid", nullable=false,
-			foreignKey = @ForeignKey(foreignKeyDefinition ="foreign key(productoid) references producto(productoid)" )))
+		@AssociationOverride(name = "DetalleOrdenID.orden_compra", joinColumns = @JoinColumn(name = "orden_compraid", nullable = false, foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key(orden_compraid) references orden_compra(orden_compraid)"))),
+		@AssociationOverride(name = "DetalleOrdenID.producto", joinColumns = @JoinColumn(name = "productoid", nullable = false, foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key(productoid) references producto(productoid)")))
 })
-public class DetalleOrden implements Serializable{
-	
+public class DetalleOrden implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@EmbeddedId
-	private DetalleOrdenKey DetalleOrdenID =new DetalleOrdenKey();
-	
+	private DetalleOrdenKey DetalleOrdenID = new DetalleOrdenKey();
+
 	@Column
 	private Double precio;
-	
+
 	@Column
 	private Integer cantidad;
-	
+
 	@Column
 	private Double subtotal;
+
+	public DetalleOrden() {
+
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(DetalleOrdenID);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DetalleOrden other = (DetalleOrden) obj;
+		return Objects.equals(DetalleOrdenID, other.DetalleOrdenID);
+	}
 
 	public DetalleOrdenKey getDetalleOrdenID() {
 		return DetalleOrdenID;
@@ -69,13 +86,13 @@ public class DetalleOrden implements Serializable{
 	public void setSubtotal(Double subtotal) {
 		this.subtotal = subtotal;
 	}
-	
+
 	public OrdenCompra getOrden_compra() {
 		return DetalleOrdenID.getOrden_compra();
 	}
 
 	public void setPedido(OrdenCompra orden_compra) {
-		this.DetalleOrdenID.setOrden_compra(orden_compra);;
+		this.DetalleOrdenID.setOrden_compra(orden_compra);
 	}
 
 	public Producto getProducto() {
@@ -85,26 +102,4 @@ public class DetalleOrden implements Serializable{
 	public void setProducto(Producto producto) {
 		this.DetalleOrdenID.setProducto(producto);
 	}
-	
-	public DetalleOrden() {
-		
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(DetalleOrdenID);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DetalleOrden other = (DetalleOrden) obj;
-		return Objects.equals(DetalleOrdenID, other.DetalleOrdenID);
-	}	
-	
 }
