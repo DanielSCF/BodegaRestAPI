@@ -1,6 +1,7 @@
 package com.eduale.bodega.controlador;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +24,13 @@ public class TrabajadorControlador {
 	public List<Trabajador> listarTrabajador() {
 		return trabajadorService.listarTrabajador();
 	}
+	
+	@GetMapping(path = "/adminsalmaceneros")
+	public Optional<List<Trabajador>> listarAdminsAlmaceneros(){
+		return trabajadorService.listarAdminsAlmaceneros();
+	}
 
-	@PostMapping()
+	@PostMapping
 	public Trabajador guardarTrabajador(@RequestBody Trabajador t) {
 		return trabajadorService.guardarTrabajador(t);
 	}

@@ -1,6 +1,7 @@
 package com.eduale.bodega.servicio;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,9 @@ public class TrabajadorServicio {
 	public Trabajador guardarTrabajador(Trabajador u) {
 		return datatrabajador.save(u);
 		
+	}
+
+	public Optional<List<Trabajador>> listarAdminsAlmaceneros(){
+		return datatrabajador.findWorkersOrder();
 	}
 }
