@@ -3,9 +3,13 @@ package com.eduale.bodega.controlador;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +35,17 @@ public class TrabajadorControlador {
 	}
 
 	@PostMapping
-	public Trabajador guardarTrabajador(@RequestBody Trabajador t) {
+	public Trabajador guardarTrabajador(@Valid @RequestBody Trabajador t) {
 		return trabajadorService.guardarTrabajador(t);
+	}
+
+	@PutMapping
+	public Trabajador editarTrabajador(@Valid @RequestBody Trabajador t) {
+		return trabajadorService.editarTrabajador(t);	
+	}
+
+	@DeleteMapping
+	public void eliminarTrabajador(@Valid @RequestBody Trabajador t) {
+		trabajadorService.eliminarTrabajador(t);
 	}
 }

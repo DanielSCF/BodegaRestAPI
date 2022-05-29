@@ -30,4 +30,12 @@ public class DetallePedidoServicio {
 		return detallepedido.findPedidoByClienteYEstado(clienteID, estado);
 	}
 
+	public DetallePedido editarDetallePedido(DetallePedido u) {
+		return detallepedido.save(u);
+	}
+	
+	public void eliminarDetallePedido(DetallePedido u) {
+		detallepedido.delete(u);
+	}
+
 }

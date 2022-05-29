@@ -1,6 +1,7 @@
 package com.eduale.bodega.servicio;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,9 +27,21 @@ public class UsuarioServicio{
 
 	}
 	
+	public Optional<Usuario> buscarid(Long id) {
+		return datausuario.findById(id);
+	}
+	
 	public Usuario guardarusuario(Usuario u) {
 		datacliente.save(u.getCliente());
 		return datausuario.save(u);
+	}
+
+	public Usuario editarUsuario(Usuario u){
+		return datausuario.save(u);
+	}
+
+	public void eliminarUsuario(Usuario u){
+		datausuario.delete(u);
 	}
 
 	public APIResponse login(Usuario i){
@@ -44,8 +57,5 @@ public class UsuarioServicio{
 		}
 		
 		return apiResponse;
-	}
-	
-	
-	
+	}	
 }

@@ -3,10 +3,14 @@ package com.eduale.bodega.controlador;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +26,8 @@ public class DetallePedidoControlador {
 	private DetallePedidoServicio detallepedidoservicio;
 	 
 	@GetMapping
-    public List<DetallePedido> listaLote(){
-        return detallepedidoservicio.listardetallepedido();
+	public List<DetallePedido> listarDetallePedido() {
+		return detallepedidoservicio.listardetallepedido();
 	}
 
     @GetMapping(path = "/{clienteID}")
@@ -37,8 +41,18 @@ public class DetallePedidoControlador {
     }
 	 
 	@PostMapping
-    public DetallePedido guardarLote(@RequestBody DetallePedido t) {
-        return detallepedidoservicio.guardardetallepedido(t);
-    }
+	public DetallePedido guardarDetallePedido(@Valid @RequestBody DetallePedido t) {
+		return detallepedidoservicio.guardardetallepedido(t);
+	}
+
+    @PutMapping
+	public DetallePedido editarDetallePedido(@Valid @RequestBody DetallePedido t) {
+		return detallepedidoservicio.editarDetallePedido(t);	
+	}
+
+	@DeleteMapping
+	public void eliminarDetallePedido(@Valid @RequestBody DetallePedido t) {
+		detallepedidoservicio.eliminarDetallePedido(t);
+	}
 }
 

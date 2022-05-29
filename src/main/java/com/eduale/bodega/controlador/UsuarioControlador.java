@@ -2,10 +2,14 @@ package com.eduale.bodega.controlador;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,9 +39,19 @@ public class UsuarioControlador {
 				.body(apiResponse);
 	}
 	 
-	@PostMapping()
-	public Usuario guardarusuario(@RequestBody Usuario t) {
+	@PostMapping
+	public Usuario guardarusuario(@Valid @RequestBody Usuario t) {
 		return usuarioService.guardarusuario(t);
 	} 
+
+	@PutMapping
+	public Usuario editarUsuario(@Valid @RequestBody Usuario t) {
+		return usuarioService.editarUsuario(t);	
+	}
+
+	@DeleteMapping
+	public void eliminarUsuario(@Valid @RequestBody Usuario t) {
+		usuarioService.eliminarUsuario(t);
+	}
 	 
 }

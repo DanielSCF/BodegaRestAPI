@@ -18,15 +18,25 @@ public class TrabajadorServicio {
 	
 	public List<Trabajador> listarTrabajador(){
 		return(List<Trabajador>) datatrabajador.findAll();
+	}
 
+	public Optional<Trabajador> buscarid(Long id) {
+		return datatrabajador.findById(id);
 	}
 	
 	public Trabajador guardarTrabajador(Trabajador u) {
 		return datatrabajador.save(u);
-		
 	}
 
 	public Optional<List<Trabajador>> listarAdminsAlmaceneros(){
 		return datatrabajador.findWorkersOrder();
+	}
+	
+	public Trabajador editarTrabajador(Trabajador u) {
+		return datatrabajador.save(u);
+	}
+	
+	public void eliminarTrabajador(Trabajador u) {
+		datatrabajador.delete(u);
 	}
 }

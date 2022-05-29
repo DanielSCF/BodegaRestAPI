@@ -1,6 +1,7 @@
 package com.eduale.bodega.servicio;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,10 @@ public class MarcaServicio {
 
 	public List<Marca> listarMarca() {
 		return (List<Marca>) datamarca.findAll();
+	}
+
+	public Optional<Marca> buscarid(Long id) {
+		return datamarca.findById(id);
 	}
 
 	public Marca guardarMarca(Marca u) {

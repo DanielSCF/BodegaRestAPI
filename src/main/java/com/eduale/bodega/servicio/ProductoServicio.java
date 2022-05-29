@@ -30,4 +30,12 @@ public class ProductoServicio {
 	public Producto guardarProducto(Producto u){
 		return infoProducto.save(u);
 	}
+
+	public Producto editarProducto(Producto u) {
+		return infoProducto.save(u);
+	}
+	
+	public void eliminarProducto(Producto u) {
+		infoProducto.delete(u);
+	}
 }

@@ -26,7 +26,7 @@ public class OrdenCompra {
 	private String fecha;
 
 	@Column
-	private String total;
+	private Double total;
 
 	@Column
 	private String estado;
@@ -50,7 +50,7 @@ public class OrdenCompra {
 		
 	}
 
-	public OrdenCompra(Long orden_compraID, String fecha, String total, String estado, Proveedor proveedor,
+	public OrdenCompra(Long orden_compraID, String fecha, Double total, String estado, Proveedor proveedor,
 			Trabajador trabajador) {
 		super();
 		this.orden_compraID = orden_compraID;
@@ -77,11 +77,11 @@ public class OrdenCompra {
 		this.fecha = fecha;
 	}
 
-	public String getTotal() {
+	public Double getTotal() {
 		return total;
 	}
 
-	public void setTotal(String total) {
+	public void setTotal(Double total) {
 		this.total = total;
 	}
 
