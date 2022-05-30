@@ -35,7 +35,6 @@ public class Usuario {
 	@Size(min = 1, max = 20, message = "El campo debe tener de 1 a 20 caracteres")
 	@Column
 	private String estado;
-
 	
 	@ManyToOne
 	@JoinColumn(name="tipo_accesoid",nullable=true,unique=false,

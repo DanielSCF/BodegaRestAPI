@@ -39,4 +39,8 @@ public class TrabajadorServicio {
 	public void eliminarTrabajador(Trabajador u) {
 		datatrabajador.delete(u);
 	}
+	
+	public Optional<List<Trabajador>> listarAdminsVendedores(){
+		return datatrabajador.findWorkersSale();
+	}
 }

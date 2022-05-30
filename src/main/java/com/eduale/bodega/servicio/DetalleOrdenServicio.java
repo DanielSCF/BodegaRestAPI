@@ -33,5 +33,9 @@ public class DetalleOrdenServicio {
     public void eliminarDetalleOrden(DetalleOrden u) {
         detalleOrden.delete(u);
     }
+
+    public List<DetalleOrden> listarSegunOrdenId(Long ordenId){
+    	return (List<DetalleOrden>) detalleOrden.detallesOrdenId(ordenId);
+    }
     
 }

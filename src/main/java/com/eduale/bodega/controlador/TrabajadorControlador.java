@@ -34,6 +34,11 @@ public class TrabajadorControlador {
 		return trabajadorService.listarAdminsAlmaceneros();
 	}
 
+	@GetMapping(path = "/adminsvendedores")
+	public Optional<List<Trabajador>> listarAdminsVendedores(){
+		return trabajadorService.listarAdminsVendedores();
+	}
+	
 	@PostMapping
 	public Trabajador guardarTrabajador(@Valid @RequestBody Trabajador t) {
 		return trabajadorService.guardarTrabajador(t);

@@ -38,4 +38,8 @@ public class DetallePedidoServicio {
 		detallepedido.delete(u);
 	}
 
+	public List<DetallePedido> listarSegunPedidoId(Long pedidoId){
+    	return (List<DetallePedido>) detallepedido.detallesPedidoId(pedidoId);
+    }
+
 }

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.eduale.bodega.modelo.DetalleOrden;
+import com.eduale.bodega.modelo.OrdenCompra;
 import com.eduale.bodega.modelo.Usuario;
 import com.eduale.bodega.servicio.UsuarioServicio;
 
@@ -59,5 +61,19 @@ public class UsuarioControlador {
 	public void eliminarUsuario(@Valid @RequestBody Usuario t) {
 		usuarioService.eliminarUsuario(t);
 	}
-	 
+
+	/*
+	@PutMapping
+	public OrdenCompra editarOrden(@RequestBody OrdenCompra t){
+		if(!(t.getEstado().equalsIgnoreCase("pendiente"))) {
+			List<DetalleOrden> detalles = new ArrayList<>();
+			detalles = (List<DetalleOrden>) detalleOrdenServicio.listarSegunOrdenId(t.getOrden_compraID());
+			for(DetalleOrden detalleOrden : detalles) {
+				Optional<Producto> producto = productoServicio.getProductById(detalleOrden.getProducto().getProductoid());
+				producto.get().setStock(detalleOrden.getCantidad() + producto.get().getStock());
+			}
+		}
+		return ordenService.guardarOrden(t);
+	}
+	 */
 }

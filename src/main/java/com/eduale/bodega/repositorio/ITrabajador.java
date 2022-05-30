@@ -11,4 +11,7 @@ import com.eduale.bodega.modelo.Trabajador;
 public interface ITrabajador extends CrudRepository <Trabajador, Long> {
     @Query(value = "SELECT * FROM trabajador WHERE cargo = 'almacenero' OR cargo = 'administrador'", nativeQuery = true)
 	public Optional<List<Trabajador>> findWorkersOrder();
+
+    @Query(value = "SELECT * FROM trabajador WHERE cargo = 'vendedor' OR cargo = 'administrador'", nativeQuery = true)
+	public Optional<List<Trabajador>> findWorkersSale();
 }

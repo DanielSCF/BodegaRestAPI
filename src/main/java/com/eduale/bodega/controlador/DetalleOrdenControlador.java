@@ -1,7 +1,6 @@
 package com.eduale.bodega.controlador;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -42,4 +41,5 @@ public class DetalleOrdenControlador {
 	public void eliminarDetalleOrden(@Valid @RequestBody DetalleOrden t) {
 		detalleordenservicio.eliminarDetalleOrden(t);
 	}
+
 }
