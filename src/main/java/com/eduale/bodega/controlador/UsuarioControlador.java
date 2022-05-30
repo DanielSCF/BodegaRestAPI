@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.eduale.bodega.modelo.LoginRequestDTO;
 import com.eduale.bodega.modelo.Usuario;
 import com.eduale.bodega.servicio.UsuarioServicio;
 
@@ -39,7 +38,7 @@ public class UsuarioControlador {
 	 
 	@PostMapping("/login")
 	public ResponseEntity<APIResponse> login(@RequestBody Usuario loginRequestDTO){
-	
+
 		APIResponse apiResponse= usuarioService.login(loginRequestDTO);
 		return ResponseEntity
 				.status(apiResponse.getStatus())

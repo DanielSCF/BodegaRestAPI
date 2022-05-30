@@ -21,27 +21,22 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long clienteID;
 
-	@NotNull
 	@Size(min = 7, max = 8, message = "El campo debe tener 8 caracteres")
 	@Column(unique = true)
 	private String dni;
 
-	@NotNull
 	@Size(min = 3, max = 60, message = "El campo debe tener de 3 a 60 caracteres")
 	@Column
 	private String nombre;
 
-	@NotNull
 	@Size(min = 3, max = 60, message = "El campo debe tener de 3 a 60 caracteres")
 	@Column
 	private String apellidos;
 
-	@NotNull
 	@Size(min = 5, max = 150, message = "El campo debe tener de 10 a 150 caracteres")
 	@Column
 	private String direccion;
 
-	@NotNull
 	@Size(min = 8, max = 9, message = "El campo debe tener 9 caracteres")
 	@Column(unique = true)
 	private String telefono;
